@@ -21,7 +21,7 @@ class SendEmailVerification implements ShouldQueue
      */
     public function __construct(User $user)
     {
-        // $this->user = $user;
+        $this->user = $user;
     }
 
     /**
@@ -29,8 +29,8 @@ class SendEmailVerification implements ShouldQueue
      */
     public function handle(): void
     {
-        // if ($this->user instanceof MustVerifyEmail && !$this->user->hasVerifiedEmail()) {
-        //     $this->user->sendEmailVerificationNotification();
-        // }
+        if ($this->user instanceof MustVerifyEmail && !$this->user->hasVerifiedEmail()) {
+            $this->user->sendEmailVerificationNotification();
+        }
     }
 }
